@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Azure Subscription Viewer</title>
+</head>
+<body>
+    <h1>Enter Azure Credentials</h1>
+    <form method="POST">
+        <label>Tenant ID:</label><br>
+        <input type="text" name="tenant_id" required><br><br>
+
+        <label>Client ID:</label><br>
+        <input type="text" name="client_id" required><br><br>
+
+        <label>Client Secret:</label><br>
+        <input type="password" name="client_secret" required><br><br>
+
+        <input type="submit" value="Get Subscription Name">
+    </form>
+
+    {% if subscription_name %}
+        <h2>Subscription Name: {{ subscription_name }}</h2>
+    {% elif error %}
+        <h2 style="color:red;">{{ error }}</h2>
+    {% endif %}
+</body>
+</html>
