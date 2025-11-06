@@ -7,6 +7,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     subscription_name = None
+    subscription_id = None
     error = None
 
     if request.method == 'POST':
@@ -28,13 +29,14 @@ def index():
 
             if subscriptions:
                 subscription_name = subscriptions[0].display_name
+                subscription_id = subscriptions[0].subscription_id
             else:
                 error = "No subscriptions found :(" + str(len(subscriptions))
 
         except Exception as e:
             error = f"Authentication failed: {str(e)}"
 
-    return render_template('index.html', subscription_name=subscription_name, error=error)
+    return render_template('index.html', subscription_name=subscription_name, subscription_id=subscription_id error=error)
 
 if __name__ == '__main__':
     app.run(debug=True)
