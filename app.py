@@ -36,7 +36,7 @@ def index():
         except Exception as e:
             error = f"Authentication failed: {str(e)}"
 
-    return render_template('index.html', subscription_name=subscription_name, subscription_id=subscription_id error=error)
+    return render_template('index.html', subscription_name=subscription_name, subscription_id=subscription_id, error=error)
 
 if __name__ == '__main__':
     app.run(debug=True)
